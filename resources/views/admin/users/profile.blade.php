@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" name="email" value="{{$user->email}}" class="form-control" id="email" placeholder="">
+                            <input type="text" disabled name="email" value="{{$user->email}}" class="form-control" id="email" placeholder="">
                             @error('email')
                             <div class="alert alert-danger">
                                 {{$message}}
@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" placeholder="">
+                            <input type="password" name="password" class="form-control" id="password" value="{{$user->password}}" placeholder="">
                             @error('password')
                             <div class="alert alert-danger">
                                 {{$message}}
@@ -51,7 +51,7 @@
                         </div>
                         <div class="form-group">
                             <label for="passwordconfirmation">Password Confirmation</label>
-                            <input type="password" name="password_confirmation" class="form-control" id="passwordconfirmation" placeholder="">
+                            <input type="password" name="password_confirmation" class="form-control" id="passwordconfirmation" value="{{$user->password}}" placeholder="">
                         </div>
                         @error('password_confirmation')
                         <div class="alert alert-danger">
