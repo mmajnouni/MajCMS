@@ -5,12 +5,12 @@
 
 
                     <!-- Title -->
-                    <h1 class="mt-4">Post Title</h1>
+                    <h1 class="mt-4">{{$post->title}}</h1>
 
                     <!-- Author -->
                     <p class="lead">
                         by
-                        <a href="#">Start Bootstrap</a>
+                        <a href="#">{{$post->user->name}}</a>
                     </p>
 
                     <hr>

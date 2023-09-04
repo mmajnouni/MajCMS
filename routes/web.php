@@ -11,4 +11,4 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/admin', [AdminsController::class, 'index'])->name('admin.index');
 Route::get('/admin/users/{user}/profile', [UserController::class, 'show'])->name('user.profile.show');
 Route::put('/admin/users/{user}/update', [UserController::class, 'update'])->name('user.profile.update');
-Route::get('/post', [PostController::class, 'show'])->name('post');
+Route::get('/post/{post}', [PostController::class, 'show'])->name('post');
