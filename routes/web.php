@@ -8,7 +8,13 @@ use App\Http\Controllers\PostController;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/admin', [AdminsController::class, 'index'])->name('admin.index');
+
 Route::get('/admin/users/{user}/profile', [UserController::class, 'show'])->name('user.profile.show');
 Route::put('/admin/users/{user}/update', [UserController::class, 'update'])->name('user.profile.update');
 Route::get('/post/{post}', [PostController::class, 'show'])->name('post');
+
+Route::middleware('auth')->group(function (){
+    Route::get('/admin', [AdminsController::class, 'index'])->name('admin.index');
+    Route::get('/admin/posts/create', [PostController::class, 'create'])->name('post.create');
+    Route::post('/admin/posts', [PostController::class, 'store'])->name('post.store');
+});
