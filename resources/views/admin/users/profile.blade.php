@@ -7,7 +7,7 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-4">
-                            <img class="img-profile rounded-circle" src="{{$user->avatar}}">
+                            <img class="img-profile rounded-circle" src="{{$user->avatar}}" height="300">
                         </div>
                         <div class="form-group">
                             <input type="file" name="avatar">
@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" disabled name="email" value="{{$user->email}}" class="form-control" id="email" placeholder="">
+                            <input type="text" name="email" value="{{$user->email}}" class="form-control" id="email" placeholder="">
                             @error('email')
                             <div class="alert alert-danger">
                                 {{$message}}

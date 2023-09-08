@@ -17,13 +17,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-       User::factory()->count(5)->has(Post::factory()->count(3))->create();
-//        DB::table('users')->insert([
-//         'name' => 'morteza majnouni',
-//         'username' => 'm_maj7',
-//            'email' => 'mmajnouni@gmail.com',
-//            'password' => bcrypt(12345678)
-//        ]);
+       //User::factory()->count(5)->has(Post::factory()->count(3))->create();
+       
+       DB::table('users')->insert([
+        'name' => 'morteza majnouni',
+        'username' => 'm_maj7',
+           'email' => 'mmajnouni@gmail.com',
+           'password' => bcrypt(12345678)
+       ]);
 
 
 
