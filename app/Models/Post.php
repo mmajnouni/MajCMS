@@ -23,5 +23,7 @@ class Post extends Model
         }
         return asset($value);
         }
+        
+  
     
 }
