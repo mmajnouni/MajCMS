@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\support\Facades\Session;
 class UserController extends Controller
 {
     public function show(User $user) {
@@ -25,6 +25,7 @@ class UserController extends Controller
         }
         $user->update($inputs);
         return back();
+        session()->flash('message', 'Profile Updated successfully!');
 //        if (request('avatar')) {
 //            dd(request('avatar'));
 //        }

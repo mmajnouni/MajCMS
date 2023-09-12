@@ -1,6 +1,11 @@
 <x-admin-master>
     @section('content')
         <h2>User Profile: {{$user->name}}</h2>
+
+        @if(Session('message'))
+            <div class="alert alert-success">{{Session('message')}} </div>
+        @endif
+
             <div class="row">
                 <div class="col-sm-6">
                     <form action="{{route('user.profile.update', $user)}}" method="post" enctype="multipart/form-data">
@@ -42,7 +47,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" value="{{$user->password}}" placeholder="">
+                            <input type="password" name="password" class="form-control" id="password" value="" placeholder="">
                             @error('password')
                             <div class="alert alert-danger">
                                 {{$message}}
@@ -51,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label for="passwordconfirmation">Password Confirmation</label>
-                            <input type="password" name="password_confirmation" class="form-control" id="passwordconfirmation" value="{{$user->password}}" placeholder="">
+                            <input type="password" name="password_confirmation" class="form-control" id="passwordconfirmation" value="" placeholder="">
                         </div>
                         @error('password_confirmation')
                         <div class="alert alert-danger">
