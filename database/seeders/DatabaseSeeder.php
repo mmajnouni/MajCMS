@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-       //User::factory()->count(5)->has(Post::factory()->count(3))->create();
-       
+       User::factory()->count(1)->has(Post::factory()->count(3))->create();
+
        DB::table('users')->insert([
         'name' => 'morteza majnouni',
         'username' => 'm_maj7',
