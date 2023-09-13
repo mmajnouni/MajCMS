@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Models\User;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -18,8 +19,14 @@ Route::middleware('auth')->group(function (){
     Route::get('/admin/posts/', [PostController::class, 'index'])->name('post.index');
     Route::get('/admin/posts/create', [PostController::class, 'create'])->name('post.create');
     Route::post('/admin/posts', [PostController::class, 'store'])->name('post.store');
-    
+
     Route::delete('/admin/posts/{post}/destroy', [PostController::class, 'destroy'])->name('post.destroy');
     Route::patch('/admin/posts/{post}/update', [PostController::class, 'update'])->name('post.update');
     Route::get('/admin/posts/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
+
+    Route::delete('admin/users/{user}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
+
+});
+Route::middleware('role:admin')->group(function (){
+    Route::get('admin/users', [UserController::class, 'index'])->name('users.index');
 });

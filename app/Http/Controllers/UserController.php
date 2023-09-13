@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\support\Facades\Session;
 class UserController extends Controller
 {
+    public function index() {
+        $users = User::all();
+        return view('admin.users.index', ['users' => $users]);
+    }
     public function show(User $user) {
         return view('admin.users.profile', ['user' => $user]);
     }
@@ -29,5 +33,11 @@ class UserController extends Controller
 //        if (request('avatar')) {
 //            dd(request('avatar'));
 //        }
+    }
+    public function destroy(User $user) {
+        $user->delete();
+        session()->flash('message', 'User Deleted!');
+        return back();
+
     }
 }
