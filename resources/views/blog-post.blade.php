@@ -1,6 +1,7 @@
 <x-home-master>
     @section('content')
 
+        <div class="card mb-4">
                 <!-- Post Content Column -->
 
 
@@ -59,14 +60,7 @@
                         </div>
                     </div>
 
-
-
-
-
-
-
-
-
+        </div>
 
 
     @endsection
