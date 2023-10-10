@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <x-head.tinymce-config/>
+
     <title>Maj CMS Admin Panel</title>
 
 

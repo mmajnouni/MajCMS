@@ -1,6 +1,6 @@
 <x-admin-master>
     @section('content')
-        
+
         @if(Session('message'))
        <div class="alert alert-danger"> {{Session('message')}}</div>
        @elseif(Session('post-create-message'))
@@ -24,10 +24,10 @@
                       <th>Created At</th>
                       <th>Updated At</th>
                       <th>Delete</th>
-                      
+
                     </tr>
                   </thead>
-                
+
                   <tbody>
                     @foreach($posts as $post)
                     <tr>
@@ -54,10 +54,10 @@
             </div>
           </div>
   <div class="d-flex">
-  <div class="m-auto">  
+  <div class="m-auto">
   {{$posts->links()}}
   </div>
- </div>          
+ </div>
      @endsection
 
     @section('scripts')

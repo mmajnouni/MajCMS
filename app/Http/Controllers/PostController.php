@@ -3,19 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-//use App\Models\User;
+use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\Session;
 
 class PostController extends Controller
 {
     public function index() {
+         if(auth()->user()->userHasRoles('admin')){
+        $posts = Post::paginate(5);
+        } else {
         $posts = auth()->user()->posts()->paginate(5);
-        
-        return view('admin.posts.index', ['posts' => $posts]);
+        }
+      return view('admin.posts.index', ['posts' => $posts]);
     }
     public function show(Post $post) {
-        
+
        return view('blog-post', ['post' => $post]);
     }
     public function create() {
@@ -23,11 +27,11 @@ class PostController extends Controller
         return view('admin.posts.create');
     }
     public function store() {
-        //dd(request()->all()); 
+      //dd(request()->all());
         $this->authorize('create', Post::class);
         $inputs = request()->validate([
             'title' => 'required|min:5|max:255',
-            'post_image' => 'file',
+            'post_image' => 'image|mimes:jpg,jpeg,png,webp|max:6000',
             'body'=> 'required'
         ]);
         if (request('post_image')){
@@ -39,9 +43,9 @@ class PostController extends Controller
 
         return redirect()->route('post.index');
     }
-    
+
     public function edit(Post $post) {
-        $this->authorize('view', $post);    
+        $this->authorize('view', $post);
         return view('admin.posts.edit', ['post' => $post]);
     }
     public function destroy(Post $post) {
